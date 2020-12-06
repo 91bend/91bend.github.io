@@ -103,11 +103,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>#!/bin/bash<br>read -p “please insert : “ wt<br>searchsploit -w $wt | grep http &gt; 2.txt<br>row=<code>wc -l &lt; 2.txt</code><br>for((i=1;i&lt;$row+1;i++))<br>do<br>       num=$(sed -n “$i”p 2.txt| grep http | awk -F ‘<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/&#39;">https://www.exploit-db.com/exploits/&#39;</a> ‘{print $2}’)<br>       url=”<a target="_blank" rel="noopener" href="https://www.exploit-db.com/raw/$num&quot;">https://www.exploit-db.com/raw/$num&quot;</a><br>       wget -q $url -O /root/0-EXP/$num<br>done</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ckichpugg0001fgs6am0i2zsp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2020/12/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ckichuzkr0002kss667rmbker" class="article-share-link">分享</a>
       
       
     </footer>
