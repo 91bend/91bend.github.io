@@ -43,7 +43,7 @@
     <h2 class="author">BEND</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
       <a href="/categories"><div><strong>0</strong><br>分类</div></a>
       <a href="/tags"><div><strong>0</strong><br>标签</div></a>
     </div>
@@ -70,6 +70,72 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-upload-labs-3" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/08/upload-labs-3/" class="article-date">
+  <time class="post-time" datetime="2020-12-08T00:30:25.000Z" itemprop="datePublished">
+    <span class="post-month">12月</span><br/>
+    <span class="post-day">08</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/08/upload-labs-3/">upload-labs-3</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤；</p>
+<p><img src="" alt="2020-12-08 08-35-24屏幕截图"></p>
+<p>2.根据提示黑名单只有.php,.asp,.aspx,.jsp四个，可以用一些可解析的特殊后缀如.php3 , .phtml等，上传.phtml成功；</p>
+<p><img src="" alt="image-20201208084400970"></p>
+<p>3.测试上传的1.phtml;</p>
+<p><img src="" alt="3-3"></p>
+<p>可解析的特殊后缀</p>
+<p>–</p>
+<p>通过.htaccess绕过黑名单</p>
+<p> .htaccess是一个纯文本文件，它里面存放着Apache服务器配置相关的指令。<br> .htaccess主要的作用有：URL重写、自定义错误页面、MIME类型配置以及访问权限控制等。</p>
+<p>httpd.conf配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">Options FollowSymLinks</span><br><span class="line">AllowOverride None   #改成 AllowOverride All  启用.htaccess</span><br><span class="line"><span class="meta">#</span><span class="bash">AccessFileName .config  //添加.htaccess以外的文件名.config</span></span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>利用.htaccess的重写绕过黑名单</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FilesMatch</span> &quot;<span class="attr">1.jpg</span>&quot;&gt;</span></span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上传.htaccess和1.jpg;</p>
+<p>测试</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/08/upload-labs-3/" data-id="ckifa3vb8000315s65tgp30t9" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-咸鱼杂记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -144,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/06/%E5%92%B8%E9%B1%BC%E6%9D%82%E8%AE%B0/" data-id="ckidymf880005iopv4jix74ih" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2020/12/06/%E5%92%B8%E9%B1%BC%E6%9D%82%E8%AE%B0/" data-id="ckifa3vbi000615s6dii88ofk" class="article-share-link">分享</a>
       
       
     </footer>
@@ -192,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/06/sqlilab-writeup/" data-id="ckidymf830001iopvb1516y42" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2020/12/06/sqlilab-writeup/" data-id="ckifa3vb5000115s6au8sarxa" class="article-share-link">分享</a>
       
       
     </footer>
@@ -262,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/06/uploadlab-writeup/" data-id="ckidymf860003iopv5pqfh10z" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2020/12/06/uploadlab-writeup/" data-id="ckifa3vba000415s6g22jc416" class="article-share-link">分享</a>
       
       
     </footer>
@@ -313,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ckidymf870004iopvcfb9h5vw" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2020/12/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="ckifa3vba000515s64pmgb15y" class="article-share-link">分享</a>
       
       
     </footer>
@@ -365,7 +431,7 @@
     <h2 class="author">BEND</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>4</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
       <a href="/categories"><div><strong>0</strong><br>分类</div></a>
       <a href="/tags"><div><strong>0</strong><br>标签</div></a>
     </div>
