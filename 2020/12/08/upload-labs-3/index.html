@@ -5,17 +5,20 @@
   
   <title>upload-labs-3 | BEND</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤；  2.根据提示黑名单只有.php,.asp,.aspx,.jsp四个，可以用一些可解析的特殊后缀如.php3 , .phtml等，上传.phtml成功；  3.测试上传的1.phtml;  源码 123456789101112131415161718192021222324$is_upload &#x3D; false;$msg">
+  <meta name="description" content="第三关1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤； 2.根据提示黑名单只有.php,.asp,.aspx,.jsp四个，可以用一些可解析的特殊后缀如.php3 , .phtml等，上传.phtml成功； 3.测试上传的1.phtml; 源码 123456789101112131415161718192021222324$is_upload &#x3D; false;$msg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="upload-labs-3">
 <meta property="og:url" content="http://example.com/2020/12/08/upload-labs-3/index.html">
 <meta property="og:site_name" content="BEND">
-<meta property="og:description" content="1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤；  2.根据提示黑名单只有.php,.asp,.aspx,.jsp四个，可以用一些可解析的特殊后缀如.php3 , .phtml等，上传.phtml成功；  3.测试上传的1.phtml;  源码 123456789101112131415161718192021222324$is_upload &#x3D; false;$msg">
+<meta property="og:description" content="第三关1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤； 2.根据提示黑名单只有.php,.asp,.aspx,.jsp四个，可以用一些可解析的特殊后缀如.php3 , .phtml等，上传.phtml成功； 3.测试上传的1.phtml; 源码 123456789101112131415161718192021222324$is_upload &#x3D; false;$msg">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/root/.config/Typora/typora-user-images/image-20201212150355083.png">
+<meta property="og:image" content="http://example.com/root/.config/Typora/typora-user-images/image-20201212151436292.png">
 <meta property="article:published_time" content="2020-12-08T00:30:25.000Z">
-<meta property="article:modified_time" content="2020-12-08T01:08:21.592Z">
+<meta property="article:modified_time" content="2020-12-12T08:00:45.428Z">
 <meta property="article:author" content="BEND">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/root/.config/Typora/typora-user-images/image-20201212150355083.png">
   
     <link rel="alternate" href="/atom.xml" title="BEND" type="application/atom+xml">
   
@@ -47,7 +50,7 @@
     <h2 class="author">BEND</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
       <a href="/categories"><div><strong>0</strong><br>分类</div></a>
       <a href="/tags"><div><strong>0</strong><br>标签</div></a>
     </div>
@@ -105,27 +108,62 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤；</p>
-<p><img src="" alt="2020-12-08 08-35-24屏幕截图"></p>
+        <h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><p>1.直接上传1.php,发现没有前端JS检测，根据错误提示判断是黑名单过滤；</p>
 <p>2.根据提示黑名单只有.php,.asp,.aspx,.jsp四个，可以用一些可解析的特殊后缀如.php3 , .phtml等，上传.phtml成功；</p>
-<p><img src="" alt="image-20201208084400970"></p>
 <p>3.测试上传的1.phtml;</p>
-<p><img src="" alt="3-3"></p>
 <p>源码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$is_upload</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$msg</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(<span class="variable">$UPLOAD_ADDR</span>)) &#123;</span><br><span class="line">        <span class="variable">$deny_ext</span> = <span class="keyword">array</span>(<span class="string">&#x27;.asp&#x27;</span>,<span class="string">&#x27;.aspx&#x27;</span>,<span class="string">&#x27;.php&#x27;</span>,<span class="string">&#x27;.jsp&#x27;</span>);</span><br><span class="line">        <span class="variable">$file_name</span> = trim(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line">        <span class="variable">$file_name</span> = deldot(<span class="variable">$file_name</span>);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        <span class="variable">$file_ext</span> = strrchr(<span class="variable">$file_name</span>, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">        <span class="variable">$file_ext</span> = strtolower(<span class="variable">$file_ext</span>); <span class="comment">//转换为小写</span></span><br><span class="line">        <span class="variable">$file_ext</span> = str_ireplace(<span class="string">&#x27;::$DATA&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$file_ext</span>);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        <span class="variable">$file_ext</span> = trim(<span class="variable">$file_ext</span>); <span class="comment">//收尾去空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!in_array(<span class="variable">$file_ext</span>, <span class="variable">$deny_ext</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>], <span class="variable">$UPLOAD_ADDR</span>. <span class="string">&#x27;/&#x27;</span> . <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>])) &#123;</span><br><span class="line">                 <span class="variable">$img_path</span> = <span class="variable">$UPLOAD_ADDR</span> .<span class="string">&#x27;/&#x27;</span>. <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">                 <span class="variable">$is_upload</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$msg</span> = <span class="string">&#x27;不允许上传.asp,.aspx,.php,.jsp后缀文件！&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$msg</span> = <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;文件夹不存在,请手工创建！&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可解析的特殊后缀</p>
 <p>–</p>
-<p>通过.htaccess绕过黑名单</p>
+<h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><p>通过.htaccess绕过黑名单</p>
 <p> .htaccess是一个纯文本文件，它里面存放着Apache服务器配置相关的指令。<br> .htaccess主要的作用有：URL重写、自定义错误页面、MIME类型配置以及访问权限控制等。</p>
 <p>httpd.conf配置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">Options FollowSymLinks</span><br><span class="line">AllowOverride None   #改成 AllowOverride All  启用.htaccess</span><br><span class="line"><span class="meta">#</span><span class="bash">AccessFileName .config  //添加.htaccess以外的文件名.config</span></span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
 
-<p>利用.htaccess的重写绕过黑名单</p>
+<p>利用.htaccess的重写解析绕过黑名单</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FilesMatch</span> &quot;<span class="attr">1.jpg</span>&quot;&gt;</span></span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>上传.htaccess和1.jpg;</p>
 <p>测试</p>
+<h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><p>查看源码得知是黑名单过滤同时对.htaccess进行了过滤 ，发现没有对字母大小写进行过滤</p>
+<p>尝试改变大小写进行上传1.pHP成功</p>
+<p>测试</p>
+<p><img src="/root/.config/Typora/typora-user-images/image-20201212150355083.png" alt="image-20201212150355083"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$is_upload</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$msg</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(<span class="variable">$UPLOAD_ADDR</span>)) &#123;</span><br><span class="line">        <span class="variable">$deny_ext</span> = <span class="keyword">array</span>(<span class="string">&quot;.php&quot;</span>,<span class="string">&quot;.php5&quot;</span>,<span class="string">&quot;.php4&quot;</span>,<span class="string">&quot;.php3&quot;</span>,<span class="string">&quot;.php2&quot;</span>,<span class="string">&quot;.html&quot;</span>,<span class="string">&quot;.htm&quot;</span>,<span class="string">&quot;.phtml&quot;</span>,<span class="string">&quot;.pHp&quot;</span>,<span class="string">&quot;.pHp5&quot;</span>,<span class="string">&quot;.pHp4&quot;</span>,<span class="string">&quot;.pHp3&quot;</span>,<span class="string">&quot;.pHp2&quot;</span>,<span class="string">&quot;.Html&quot;</span>,<span class="string">&quot;.Htm&quot;</span>,<span class="string">&quot;.pHtml&quot;</span>,<span class="string">&quot;.jsp&quot;</span>,<span class="string">&quot;.jspa&quot;</span>,<span class="string">&quot;.jspx&quot;</span>,<span class="string">&quot;.jsw&quot;</span>,<span class="string">&quot;.jsv&quot;</span>,<span class="string">&quot;.jspf&quot;</span>,<span class="string">&quot;.jtml&quot;</span>,<span class="string">&quot;.jSp&quot;</span>,<span class="string">&quot;.jSpx&quot;</span>,<span class="string">&quot;.jSpa&quot;</span>,<span class="string">&quot;.jSw&quot;</span>,<span class="string">&quot;.jSv&quot;</span>,<span class="string">&quot;.jSpf&quot;</span>,<span class="string">&quot;.jHtml&quot;</span>,<span class="string">&quot;.asp&quot;</span>,<span class="string">&quot;.aspx&quot;</span>,<span class="string">&quot;.asa&quot;</span>,<span class="string">&quot;.asax&quot;</span>,<span class="string">&quot;.ascx&quot;</span>,<span class="string">&quot;.ashx&quot;</span>,<span class="string">&quot;.asmx&quot;</span>,<span class="string">&quot;.cer&quot;</span>,<span class="string">&quot;.aSp&quot;</span>,<span class="string">&quot;.aSpx&quot;</span>,<span class="string">&quot;.aSa&quot;</span>,<span class="string">&quot;.aSax&quot;</span>,<span class="string">&quot;.aScx&quot;</span>,<span class="string">&quot;.aShx&quot;</span>,<span class="string">&quot;.aSmx&quot;</span>,<span class="string">&quot;.cEr&quot;</span>,<span class="string">&quot;.sWf&quot;</span>,<span class="string">&quot;.swf&quot;</span>,<span class="string">&quot;.htaccess&quot;</span>);</span><br><span class="line">        <span class="variable">$file_name</span> = trim(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line">        <span class="variable">$file_name</span> = deldot(<span class="variable">$file_name</span>);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        <span class="variable">$file_ext</span> = strrchr(<span class="variable">$file_name</span>, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">        <span class="variable">$file_ext</span> = str_ireplace(<span class="string">&#x27;::$DATA&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$file_ext</span>);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        <span class="variable">$file_ext</span> = trim(<span class="variable">$file_ext</span>); <span class="comment">//首尾去空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!in_array(<span class="variable">$file_ext</span>, <span class="variable">$deny_ext</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>], <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>])) &#123;</span><br><span class="line">                <span class="variable">$img_path</span> = <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$file_name</span>;</span><br><span class="line">                <span class="variable">$is_upload</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$msg</span> = <span class="string">&#x27;此文件不允许上传&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$msg</span> = <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;文件夹不存在,请手工创建！&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><p>根据apache解析规则  从右往左依次解析 如果不能解析再往左解析 所以上传1.php.ndhagad；</p>
+<p>测试</p>
+<p><img src="/root/.config/Typora/typora-user-images/image-20201212151436292.png" alt="image-20201212151436292"></p>
+<p>源码分析</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$is_upload</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$msg</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(<span class="variable">$UPLOAD_ADDR</span>)) &#123;</span><br><span class="line">        <span class="variable">$deny_ext</span> = <span class="keyword">array</span>(<span class="string">&quot;.php&quot;</span>,<span class="string">&quot;.php5&quot;</span>,<span class="string">&quot;.php4&quot;</span>,<span class="string">&quot;.php3&quot;</span>,<span class="string">&quot;.php2&quot;</span>,<span class="string">&quot;.html&quot;</span>,<span class="string">&quot;.htm&quot;</span>,<span class="string">&quot;.phtml&quot;</span>,<span class="string">&quot;.pHp&quot;</span>,<span class="string">&quot;.pHp5&quot;</span>,<span class="string">&quot;.pHp4&quot;</span>,<span class="string">&quot;.pHp3&quot;</span>,<span class="string">&quot;.pHp2&quot;</span>,<span class="string">&quot;.Html&quot;</span>,<span class="string">&quot;.Htm&quot;</span>,<span class="string">&quot;.pHtml&quot;</span>,<span class="string">&quot;.jsp&quot;</span>,<span class="string">&quot;.jspa&quot;</span>,<span class="string">&quot;.jspx&quot;</span>,<span class="string">&quot;.jsw&quot;</span>,<span class="string">&quot;.jsv&quot;</span>,<span class="string">&quot;.jspf&quot;</span>,<span class="string">&quot;.jtml&quot;</span>,<span class="string">&quot;.jSp&quot;</span>,<span class="string">&quot;.jSpx&quot;</span>,<span class="string">&quot;.jSpa&quot;</span>,<span class="string">&quot;.jSw&quot;</span>,<span class="string">&quot;.jSv&quot;</span>,<span class="string">&quot;.jSpf&quot;</span>,<span class="string">&quot;.jHtml&quot;</span>,<span class="string">&quot;.asp&quot;</span>,<span class="string">&quot;.aspx&quot;</span>,<span class="string">&quot;.asa&quot;</span>,<span class="string">&quot;.asax&quot;</span>,<span class="string">&quot;.ascx&quot;</span>,<span class="string">&quot;.ashx&quot;</span>,<span class="string">&quot;.asmx&quot;</span>,<span class="string">&quot;.cer&quot;</span>,<span class="string">&quot;.aSp&quot;</span>,<span class="string">&quot;.aSpx&quot;</span>,<span class="string">&quot;.aSa&quot;</span>,<span class="string">&quot;.aSax&quot;</span>,<span class="string">&quot;.aScx&quot;</span>,<span class="string">&quot;.aShx&quot;</span>,<span class="string">&quot;.aSmx&quot;</span>,<span class="string">&quot;.cEr&quot;</span>,<span class="string">&quot;.sWf&quot;</span>,<span class="string">&quot;.swf&quot;</span>,<span class="string">&quot;.htaccess&quot;</span>);</span><br><span class="line">        <span class="variable">$file_name</span> = trim(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line">        <span class="variable">$file_name</span> = deldot(<span class="variable">$file_name</span>);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        <span class="variable">$file_ext</span> = strrchr(<span class="variable">$file_name</span>, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">        <span class="variable">$file_ext</span> = strtolower(<span class="variable">$file_ext</span>); <span class="comment">//转换为小写</span></span><br><span class="line">        <span class="variable">$file_ext</span> = str_ireplace(<span class="string">&#x27;::$DATA&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$file_ext</span>);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (!in_array(<span class="variable">$file_ext</span>, <span class="variable">$deny_ext</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>], <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>])) &#123;</span><br><span class="line">                <span class="variable">$img_path</span> = <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$file_name</span>;</span><br><span class="line">                <span class="variable">$is_upload</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$msg</span> = <span class="string">&#x27;此文件不允许上传&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$msg</span> = <span class="variable">$UPLOAD_ADDR</span> . <span class="string">&#x27;文件夹不存在,请手工创建！&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//黑名单过滤同时对大小写进行了过滤 还屏蔽了.htaccess 对文件名末尾的点过滤 去除了 ::$DATA;</span></span><br><span class="line"><span class="comment">//看writeup 貌似没对后缀名进行空处理 可以通过burpsuite对上传的&quot;1.php&quot;更改为&quot;1.php &quot; 测试成功</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#绕过黑名单过滤</span><br><span class="line">1： .php3 | .phtml 等特殊后缀名绕过----第三关</span><br><span class="line">2： apache配置文件.htaccess重写文件解析绕过----第四关</span><br><span class="line">3： 更改文件后缀名大小写绕过----第五关</span><br><span class="line">4： 文件后缀名后加空格绕过----第六关</span><br><span class="line">5： 文件后缀名加.绕过（windows特性会自动将后缀名最后的&quot;.&quot;去掉）----第七关</span><br><span class="line">6： ::$DATA绕过 （windows中文件名+&quot;::$DATA&quot;&#x3D;&#x3D;&gt;文件名)---第八关</span><br><span class="line">7： 由于过滤了一个.可以. .绕过----第九关</span><br><span class="line">***如果目标服务器是apache 可以利用apache的解析漏洞进行绕过</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
     </div>
@@ -138,6 +176,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/12/10/sqli-labs-5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          sqli-labs 5-
+        
+      </div>
+    </a>
   
   
     <a href="/2020/12/06/%E5%92%B8%E9%B1%BC%E6%9D%82%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -191,7 +238,7 @@
     <h2 class="author">BEND</h2>
     <h3 class="description"></h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
       <a href="/categories"><div><strong>0</strong><br>分类</div></a>
       <a href="/tags"><div><strong>0</strong><br>标签</div></a>
     </div>
